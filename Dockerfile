@@ -21,9 +21,9 @@ RUN export BOOST_UNDERSCORES=$(echo $BOOST_VERSION | tr '.' '_') \
     && curl -L https://dl.bintray.com/boostorg/release/${BOOST_VERSION}/source/boost_${BOOST_UNDERSCORES}.tar.gz > /home/devel/boost_${BOOST_UNDERSCORES}.tar.gz \    
     && tar xf /home/devel/boost_${BOOST_UNDERSCORES}.tar.gz -C /home/devel/boost-${BOOST_UNDERSCORES} --strip-components=1 \
     && cd /home/devel/boost-${BOOST_UNDERSCORES} \
-    && ./bootstrap.sh \
+    && ./bootstrap.sh --prefix=/usr \
     && ./b2 -j$(nproc) variant=release link=static threading=multi runtime-link=static \
     && sudo ./b2 -j$(nproc) install variant=release link=static threading=multi runtime-link=static \
     && rm -rf /home/devel/*
 
-ENTRYPOINT ["/bin/bash"]
+CMD ["/bin/bash"]
