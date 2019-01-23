@@ -16,9 +16,9 @@ USER devel:devel
 
 RUN export BOOST_UNDERSCORES=$(echo $BOOST_VERSION | tr '.' '_') \
     && sudo apk update \
-    && sudo apk --no-cache add linux-headers libc-dev gcc make g++ bash git cmake curl openssl-dev bzip2-dev zlib-dev zstd-dev xz-dev icu-dev python3-dev \
+    && sudo apk --no-cache add linux-headers libc-dev gcc make g++ bash git cmake curl openssl-dev bzip2-dev zlib-dev zstd-dev xz-dev icu-dev python3-dev ninja \
     && mkdir /home/devel/boost-${BOOST_UNDERSCORES} \
-    && curl -L https://dl.bintray.com/boostorg/release/${BOOST_VERSION}/source/boost_${BOOST_UNDERSCORES}.tar.gz > /home/devel/boost_${BOOST_UNDERSCORES}.tar.gz \    
+    && curl -L https://dl.bintray.com/boostorg/release/${BOOST_VERSION}/source/boost_${BOOST_UNDERSCORES}.tar.gz > /home/devel/boost_${BOOST_UNDERSCORES}.tar.gz \
     && tar xf /home/devel/boost_${BOOST_UNDERSCORES}.tar.gz -C /home/devel/boost-${BOOST_UNDERSCORES} --strip-components=1 \
     && cd /home/devel/boost-${BOOST_UNDERSCORES} \
     && ./bootstrap.sh --prefix=/usr \
