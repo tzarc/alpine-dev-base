@@ -2,7 +2,7 @@ FROM alpine:edge
 LABEL Maintainer="Nick Brassel <nick@tzarc.org>" \
       Description="Base image with updated GCC and Boost."
 
-ENV BOOST_VERSION 1.69.0
+ENV BOOST_VERSION 1.70.0
 
 RUN apk update \
     && apk --no-cache add sudo
